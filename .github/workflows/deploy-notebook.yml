@@ -170,7 +170,7 @@ jobs:
               ]
             },
             {
-              "task_key": "02.vinkos_ingesta_estadisticos",
+              "task_key": "02.vinkos_ingesta_estadisticos", ---------------------------
               "description": "Ejecuta notebook para la carga de estadistica",
               "notebook_task": {
                 "notebook_path": "/py/vinkos/02.vinkos_ingesta_estadisticos",
