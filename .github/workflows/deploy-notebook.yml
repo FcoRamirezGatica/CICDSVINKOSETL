@@ -127,7 +127,7 @@ jobs:
           "format": "MULTI_TASK",
           "tasks": [
             {
-              "task_key": "00.vinkos_Preparacion_Ambiente",
+              "task_key": "PreparacionAmbiente",
               "description": "se genera las tablas iniciales",
               "notebook_task": {
                 "notebook_path": "/py/vinkos/00.vinkos_Preparacion_Ambiente",
@@ -147,7 +147,7 @@ jobs:
               "max_retries": 2
             },
             {
-              "task_key": "01.vinkos_Ingesta_bitacota_ctrl_file",
+              "task_key": "IngestaBitacotaCtrlFile",
               "description": "Ejecuta notebook se estrae los archivos de raw",
               "notebook_task": {
                 "notebook_path": "/py/vinkos/01.vinkos_Ingesta_bitacota_ctrl_file",
@@ -165,12 +165,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "00.vinkos_Preparacion_Ambiente"
+                  "task_key": "PreparacionAmbiente"
                 }
               ]
             },
             {
-              "task_key": "02.vinkos_ingesta_estadisticos", 
+              "task_key": "IngestaEstadisticos", 
               "description": "Ejecuta notebook para la carga de estadistica",
               "notebook_task": {
                 "notebook_path": "/py/vinkos/02.vinkos_ingesta_estadisticos",
@@ -187,12 +187,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "01.vinkos_Ingesta_bitacota_ctrl_file"
+                  "task_key": "IngestaBitacotaCtrlFile"
                 }
               ]
             },
             {
-              "task_key": "03.Transform",
+              "task_key": "Transform",
               "description": "Ejecuta notebook hace transformaciones",
               "notebook_task": {
                 "notebook_path": "/py/vinkos/03.Transform",
@@ -211,12 +211,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "02.vinkos_ingesta_estadisticos"
+                  "task_key": "IngestaEstadisticos"
                 }
               ]
             },
             {
-              "task_key": "04.load_visitantes",
+              "task_key": "LoadVisitantes",
               "description": "Ejecuta notebook genera tabla visantes",
               "notebook_task": {
                 "notebook_path": "/py/vinkos/04.load_visitantes",
@@ -231,12 +231,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "03.Transform"
+                  "task_key": "Transform"
                 }
               ]
             },
             {
-              "task_key": "05.eliminar_raw",
+              "task_key": "EliminarRaw",
               "description": "Ejecuta notebook borra los archivos de raw y genera respaldo en backup",
               "notebook_task": {
                 "notebook_path": "/py/vinkos/05.eliminar_raw",
@@ -250,7 +250,7 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "04.load_visitantes"
+                  "task_key": "LoadVisitantes"
                 }
               ]
             }
